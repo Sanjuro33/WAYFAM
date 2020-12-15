@@ -17,6 +17,11 @@ public static class GameTags
 
     //Pawn Tags
     [SerializeField] public static string spaceShipTag = "spaceShip";
-    [SerializeField] public static string allegienceTagFriend = "friend";
-    [SerializeField] public static string allegienceTagFoe = "foe";
+    [SerializeField] public static string allegienceTagBlue = "blue";
+    [SerializeField] public static string allegienceTagRed = "red";
+    [SerializeField] public static string allegienceTagNone = "none";
+
+
+    //Children
+    [SerializeField] public static string outerBaseColliderName = "Base Outer";
  }

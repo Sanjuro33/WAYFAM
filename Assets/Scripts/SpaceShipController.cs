@@ -6,6 +6,7 @@ public class SpaceShipController : MonoBehaviour
 {
     [SerializeField] GameObject fromBase;
     [SerializeField] GameObject toBase;
+    [SerializeField] Material shipMaterial;
     [SerializeField] float moveSpeed = .0f;
     [SerializeField] bool exiting;
     [SerializeField] bool moving;
@@ -14,7 +15,8 @@ public class SpaceShipController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SetAllegianceTag(GameTags.allegienceTagFoe);
+
+        
     }
 
     // Update is called once per frame
@@ -32,10 +34,14 @@ public class SpaceShipController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(formationPosition.x, formationPosition.y, formationPosition.z), moveSpeed);
     }
 
-    
+    public Material GetMaterial()
+    {
+        return shipMaterial;
+    }
 
     public void EnterBase(Vector3 toBase, float moveSpeed)
-    {  
+    {
+        
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(toBase.x, toBase.y, toBase.z), moveSpeed);
     }
 
@@ -47,6 +53,12 @@ public class SpaceShipController : MonoBehaviour
     public string GetAllegianceTag()
     {
         return allegianceTag;
+    }
+
+    public void SetShipMaterial(Material material)
+    {
+        shipMaterial = material;
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = shipMaterial;
     }
 
 

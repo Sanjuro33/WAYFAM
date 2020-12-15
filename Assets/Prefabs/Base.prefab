@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 1671382572965797871}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,15 +321,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipCount: 0
-  innerCollider: {fileID: 0}
-  ownerTag: 0
+  innerCollider: {fileID: 8831674942149646252}
+  ownerTag: blue
   SpaceShipFormation: {fileID: 9204144635907307872, guid: d5b1aa7c6a871f346bc73f74f3c9e21e, type: 3}
+  baseMaterial: {fileID: 2100000, guid: 1d41f8c57e738e44f9f12fc053be388c, type: 2}
+  genericMaterial: {fileID: 2100000, guid: 579080bda9f89ee42a5447d6d997e266, type: 2}
   SpaceShip: {fileID: 4788473558327000027, guid: c1248326a74feed47a90eb3f972aa836, type: 3}
   spawnPoint: {fileID: 1240657714}
-  toBase: {fileID: 0}
-  exitSpeed: 0.1
+  emptyBase: 0
+  addingShip: 0
+  maxShips: 20
+  shipsPerGen: 1
+  generationDelay: 2
+  exitSpeed: 0.05
   numShips: 13
-  shipCountText: {fileID: 0}
+  numShipsText: {fileID: 0}
 --- !u!1 &5791401493576350249
 GameObject:
   m_ObjectHideFlags: 0

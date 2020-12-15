@@ -11,6 +11,8 @@ TagManager:
   - spaceShip
   - redBase
   - blueBase
+  - red
+  - blue
   layers:
   - Default
   - TransparentFX

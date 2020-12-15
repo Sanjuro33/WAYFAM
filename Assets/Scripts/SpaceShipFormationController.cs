@@ -88,7 +88,7 @@ public class SpaceShipFormationController : MonoBehaviour
                 //Display the respective position of each spaceship to the console
                 //UnityEngine.Debug.Log(new Vector3(transform.position.x + formPositions[i].x, transform.position.y, transform.position.z + formPositions[i].z) + " " + i);
 
-                //Tells the spaceShip Controller to leave the base
+                //Tells the ships to leave the base
                 ship.GetComponent<SpaceShipController>().LeaveBase(transform, new Vector3(transform.localPosition.x + formPositions[i].x, transform.localPosition.y, transform.localPosition.z + formPositions[i].z), moveSpeed);
                 
                 if (ship.transform.position != new Vector3(transform.localPosition.x + formPositions[i].x, transform.localPosition.y, transform.localPosition.z + formPositions[i].z))

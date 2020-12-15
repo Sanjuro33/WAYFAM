@@ -6,11 +6,11 @@ public class ClickController : MonoBehaviour
 {
     [SerializeField] GameObject fromBase;
     [SerializeField] GameObject toBase;
-    
+    [SerializeField] float basePercentage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        basePercentage = 1;
     }
 
     // Update is called once per frame
@@ -67,17 +67,23 @@ public class ClickController : MonoBehaviour
     private void SendShipTransfer()
     {
         
-        if(fromBase.tag == toBase.tag)
-        {
-            fromBase.GetComponent<BaseController>().SendShips(1, GameTags.allegienceTagFriend, toBase);
+        //if(fromBase.tag == toBase.tag)
+        //{
+            //fromBase.GetComponent<BaseController>().SendShips(basePercentage, GameTags.allegienceTagFriend, toBase);
             //UnityEngine.Debug.Log(fromBase.tag + " " + toBase.tag);
-        }
-        if (fromBase.tag != toBase.tag)
-        {
-            fromBase.GetComponent<BaseController>().SendShips(1, GameTags.allegienceTagFoe, toBase);
-            UnityEngine.Debug.Log(fromBase.tag + " " + toBase.tag);
-        }
+        //}
+        //if (fromBase.tag != toBase.tag)
+        //{
+        fromBase.GetComponent<BaseController>().SendShips(basePercentage, fromBase.tag, toBase);
+        UnityEngine.Debug.Log(fromBase.tag + " " + toBase.tag);
+        //}
         toBase = null;
         fromBase = null;
+    }
+
+
+    public void SetBasePercentage(float percentage)
+    {
+        basePercentage = percentage;
     }
 }
