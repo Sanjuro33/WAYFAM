@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+//Main Methods
     // Start is called before the first frame update
     void Start()
+    {
+        MakeSingleton();
+    }
+
+//Utility Methods
+    
+    //Makes this object sustain between screen loads
+    private void MakeSingleton()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("gameController");
 
@@ -15,11 +25,5 @@ public class GameController : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

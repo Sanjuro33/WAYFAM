@@ -5,43 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Loads the Start Screen
     public void LoadStartScreen()
     {
         SceneManager.LoadScene(GameTags.startScreenIndex);
     }
 
+    //Loads the Loading Screen
     public void LoadLoadingScreen()
     {
         SceneManager.LoadScene(GameTags.loadingScreenIndex);
     }
 
+    //Loads the first level
     public void LoadLevel1()
     {
         SceneManager.LoadScene(GameTags.level1Index);
     }
 
+    //Loads the options screen
     public void LoadOptionsScreen()
     {
         SceneManager.LoadScene(GameTags.optionsScreenIndex);
     }
 
+    //Loads the controls screen
     public void LoadControlScreen()
     {
         SceneManager.LoadScene(GameTags.controlsScreenIndex);
     }
 
+    //Quits the game
     public void QuitGame()
     {
         Application.Quit();

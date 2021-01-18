@@ -1,87 +1,138 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ClickController : MonoBehaviour
 {
+    [Header("Sending Ships")]
     [SerializeField] GameObject fromBase;
+    [SerializeField] List<GameObject> fromBases;
     [SerializeField] GameObject toBase;
     [SerializeField] float basePercentage;
+    [SerializeField] string playerTag;
+
+    [Header("Ability Usage")]
+    [SerializeField] bool usingAbility;
+    [SerializeField] AbilityButtons abilityButtons;
+
+//Main Methods
     // Start is called before the first frame update
     void Start()
     {
         basePercentage = 1;
+        playerTag = GameTags.allegienceTagBlue;
+        abilityButtons = GetComponent<AbilityButtons>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForStartingBaseRegister();
+        CheckForClick();
     }
 
-    void CheckForStartingBaseRegister()
+//Custom Methods
+
+    //Checks for different player input from the mouse
+    void CheckForClick()
     {
+        
+        //Check for collider
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+
+        //Left click
         if (Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(setFromBase());
-        }
+            if (hit.collider.name == GameTags.outerBaseColliderName && hit.collider.transform.parent.gameObject.tag == playerTag)
+            {
+                StartCoroutine(setFromBase(hit));
+            }
 
+            if (hit.collider.name == GameTags.upgradeIconName && hit.collider.transform.parent.gameObject.tag == playerTag)
+            {
+                ActivateUpgrade(hit);
+            }
+        }
+        
+        //Right Click
         if (Input.GetButtonDown("Fire2"))
         {
-            StartCoroutine(setToBase());
+            if (hit.collider.name == GameTags.outerBaseColliderName)
+            {
+                StartCoroutine(setToBase(hit));
+            }
         }
     }
 
-    private IEnumerator setFromBase()
+    //Tells a base to upgrade when the player clicks it's upgrade button
+    private void ActivateUpgrade(RaycastHit hit)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        // Casts the ray and get the first game object hit
-        Physics.Raycast(ray, out hit);
-        if (hit.collider.name == "Base Outer")
-        {
-            Debug.Log("FromBase = " + hit.collider.transform.parent);
-            fromBase = hit.collider.transform.parent.gameObject;
-        }
-        yield return new WaitForSeconds(.1f);
+        hit.collider.gameObject.GetComponent<UpgradeButton>().UpgradeBase();
     }
 
-    private IEnumerator setToBase()
+    //Gives a slight pause before selecting a from base to make sure that the player doesn't add a base multiple times
+    private IEnumerator setFromBase(RaycastHit hit)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        // Casts the ray and get the first game object hit
-        Physics.Raycast(ray, out hit);
-        if (hit.collider.name == "Base Outer")
+        //UnityEngine.Debug.Log(playerTag);
+
+        //Debug.Log("FromBase = " + hit.collider.transform.parent);
+        //fromBase = hit.collider.transform.parent.gameObject;
+        if (!fromBases.Contains(hit.collider.transform.parent.gameObject))
         {
-            Debug.Log("ToBase =  " + hit.collider.transform.parent);
-            toBase = hit.collider.transform.parent.gameObject;
+            fromBases.Add(hit.collider.transform.parent.gameObject);
+            hit.collider.transform.parent.gameObject.transform.Find(GameTags.numShipsTextName).GetComponent<TextMeshPro>().color = Color.blue;
         }
+        else
+        {
+            fromBases.Remove(hit.collider.transform.parent.gameObject);
+            hit.collider.transform.parent.gameObject.transform.Find(GameTags.numShipsTextName).GetComponent<TextMeshPro>().color = Color.white;
+        }
+            
+        
+         yield return new WaitForSeconds(.1f);
+    }
+
+    //Gives a slight pause before selecting a to base to make sure that the player doesn't add a base multiple times
+    private IEnumerator setToBase(RaycastHit hit)
+    {
+        
+      
+       
+        //Debug.Log("ToBase =  " + hit.collider.transform.parent);
+       
+        toBase = hit.collider.transform.parent.gameObject;
+        
         yield return new WaitForSeconds(.1f);
-        if(toBase != null && fromBase != null)
+        if(toBase != null && fromBases.Count != 0)
         {
             SendShipTransfer();
         }
     }
 
+    //selects each base in the list of frombases and sends the selected attack percentage to the selected ToBase
     private void SendShipTransfer()
     {
-        
-        //if(fromBase.tag == toBase.tag)
-        //{
-            //fromBase.GetComponent<BaseController>().SendShips(basePercentage, GameTags.allegienceTagFriend, toBase);
-            //UnityEngine.Debug.Log(fromBase.tag + " " + toBase.tag);
-        //}
-        //if (fromBase.tag != toBase.tag)
-        //{
-        fromBase.GetComponent<BaseController>().SendShips(basePercentage, fromBase.tag, toBase);
-        UnityEngine.Debug.Log(fromBase.tag + " " + toBase.tag);
-        //}
+
+        foreach (GameObject from in fromBases)
+        {
+            if (from != toBase)
+            {
+                from.GetComponent<BaseController>().SendShips(basePercentage, from.tag, toBase);
+            }
+            //UnityEngine.Debug.Log(from.tag + " " + toBase.tag);
+            from.transform.Find(GameTags.numShipsTextName).GetComponent<TextMeshPro>().color = Color.white;
+            
+            
+        }
+        //clears the selected bases after an attack
         toBase = null;
-        fromBase = null;
+        
+        fromBases.Clear();
     }
 
-
+    //Sets the percentage of ships in the fromBase to send to the toBase, called by the Player Input Controller
     public void SetBasePercentage(float percentage)
     {
         basePercentage = percentage;

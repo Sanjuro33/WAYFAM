@@ -13,6 +13,7 @@ TagManager:
   - blueBase
   - red
   - blue
+  - none
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,5 @@
+This is the narrator's text.
+
+It's how they communicate with the player character. 
+
+Left click a friendly base to select it, and then right click an enemy base to send an attack!

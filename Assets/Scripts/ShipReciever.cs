@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class ShipReciever : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Triggers the OnShipCollision method in the parent GameObject
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == GameTags.spaceShipTag)

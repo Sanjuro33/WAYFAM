@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class StarshipMovement : MonoBehaviour
 {
-
+    [Header("Speeds")]
     [SerializeField] float rotationSpeed = 500f;
     [SerializeField] float movementSpeed = 50f;
-    [SerializeField] float rotationPosition;
-    [SerializeField] Coroutine turningCoroutine;
     [SerializeField] float overallSpeed = 4f;
+
+    [Header("Positions")]
+    [SerializeField] float rotationPosition;
+
+    [Header("Coroutines")]
+    [SerializeField] Coroutine turningCoroutine;
+    
+//Main Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,9 @@ public class StarshipMovement : MonoBehaviour
         Rotate();
     }
 
+//Custom Methods
+
+    //Rotates the ship
     public IEnumerator RotateShip()
     {
         while (true)
@@ -32,26 +42,31 @@ public class StarshipMovement : MonoBehaviour
         }
     }
 
+    //Moves the ship forward and backwards
     public void MoveForwardAndBackwards()
     {
+        //Moves the ship forward when W is blessed
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * Time.deltaTime * movementSpeed;
         }
 
+        //Moves the ship backward when S is pressed
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += -transform.forward * Time.deltaTime * movementSpeed;
         }
     }
+    //Rotates the ship 
     public void Rotate()
     {
-
+        //Rotates left when the A key is pressed
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
         }
 
+        //Rotates right when the D key is pressed
         if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
