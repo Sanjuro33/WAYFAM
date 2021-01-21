@@ -37,4 +37,15 @@ public static class GameTags
     //Ability Values
     [SerializeField] public static int checkShipSendValue = 1;
 
+    //Textbox Text Indentifier Tags
+    [SerializeField] public static string boolResponseQualifier = "YN:";
+    [SerializeField] public static string commentIndentifier = "(";
+    [SerializeField] public static string finalLineIdentifier = "F:";
+    [SerializeField] public static string winTextIdentifier = "W:";
+    [SerializeField] public static string loseTextIdentifier = "L:";
+    [SerializeField] public static string triggerTextIndentifier = "T:";
+    [SerializeField] public static string eventTextQualifier = "E:";
+    [SerializeField] public static string yesAnswer = "Y:";
+    [SerializeField] public static string noAnswer = "N:";
+
 }

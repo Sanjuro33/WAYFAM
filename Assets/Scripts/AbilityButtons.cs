@@ -32,6 +32,8 @@ public class AbilityButtons : MonoBehaviour
 // TODO: Set variables up in GameTags to change these numbers to easily resettable variables
     [SerializeField] List<int> abilityValues = new List<int> { 1, 2, 3, 4, 5 };
     [SerializeField] ClickController clickController;
+
+    [SerializeField] bool canInteract;
  
     
     
@@ -40,6 +42,7 @@ public class AbilityButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canInteract = true;
         clickController = gameObject.GetComponent<ClickController>();
         abilityButtons = FindObjectOfType<UIController>().GetButtons();
         player = FindObjectOfType<MotherShipController>();
@@ -236,5 +239,10 @@ public class AbilityButtons : MonoBehaviour
     void SetAbilityIndex(int index)
     {
         abilityIndex = abilityValues[index];
+    }
+
+    public void SetCanInteract(bool canAct)
+    {
+        canInteract = canAct;
     }
 }

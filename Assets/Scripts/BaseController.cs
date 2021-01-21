@@ -43,8 +43,8 @@ public class BaseController : MonoBehaviour
     [SerializeField] int numberOfVisibleTowers;
     [SerializeField] int upgradeLevel = 0;
     [SerializeField] List<int> upgradeTowerCounts = new List<int> { 0, 1, 2, 3 };
-    [SerializeField] List<int> upgradeCosts = new List<int> { 0, 15, 20, 30 };
-    [SerializeField] List<int> capacityUpgrades = new List<int> { 20, 25, 35, 45 };
+    [SerializeField] List<int> upgradeCosts = new List<int> { 0, 10, 15, 21 };
+    [SerializeField] List<int> capacityUpgrades = new List<int> { 12, 18, 24, 30 };
     [SerializeField] List<float> generationSpeedUpgrades = new List<float> { 2f, 1.6f, 1.4f, 1.3f };
     [SerializeField] bool upgradable;
     [SerializeField] List<Transform> baseSections = new List<Transform>();
@@ -52,20 +52,12 @@ public class BaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindComponents();
-        checkToGenericBase();
-        FindCommanderController();
-        FindMaterials();
-        AssignMaterials();
+        upgradeTowerCounts = new List<int> { 0, 1, 2, 3 };
+        upgradeCosts = new List<int> { 0, 10, 15, 21 };
+        capacityUpgrades = new List<int> { 12, 18, 24, 30 };
+        generationSpeedUpgrades = new List<float> { 2f, 1.6f, 1.4f, 1.3f };
+        SetUpBaseOnStart();
 
-
-
-        gameObject.tag = ownerTag;
-        UpgradeBase();
-
-        
-        AssignShipType();
-        
 
     }
 
@@ -88,6 +80,34 @@ public class BaseController : MonoBehaviour
         transform.Find(GameTags.outerBaseColliderName).GetComponent<MeshRenderer>().material = baseMaterial;
         baseSections = new List<Transform> (transform.Find(GameTags.outerBaseColliderName).GetComponentsInChildren<Transform>());
         UnityEngine.Debug.Log(baseSections);
+    }
+
+    private void SetUpBaseOnStart()
+    {
+        //makes sure that the tag of the base itself is all that's necessary to set the allegiance of a base
+        ownerTag = gameObject.tag;
+
+
+        //Find all of the bases parts, the upgrade button, colliders, and models so they can be assigned different values at a later date
+        FindComponents();
+
+        //Sets the base to generic if the tag it recieves is generic
+        checkToGenericBase();
+
+        //Finds the commander controller that belongs to the base's tag
+        FindCommanderController();
+
+        //Find the materials associated with the base's commander controller
+        FindMaterials();
+
+        //Assign the materials from FindMaterials to the models on the base
+        AssignMaterials();
+
+        //Upgrade the base to the desired level
+        UpgradeBase();
+
+
+        AssignShipType();
     }
 
     private void RevealTowers(int towersToReveal)

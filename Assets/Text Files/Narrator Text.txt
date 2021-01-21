@@ -1,5 +1,44 @@
-This is the narrator's text.
+Hey? Why are you flying a mothership? [ENTER]
+ 
+It doesn't matter, we have a xeno invasion force that's taken root in this sector, and for the mean time you're all we've got [ENTER]
 
-It's how they communicate with the player character. 
+YN:Do you at least know how to use that thing? (Y/N)
 
-Left click a friendly base to select it, and then right click an enemy base to send an attack!
+Y:F:Okay, sounds good. Just take it out for a spin, crush the xenos, and we can talk later about where you got your hands on it. 
+
+N:Well, it sure was a mighty fine plan to get your hands on a mothership you didn't know how to operate, now wasn't it?
+
+N:No matter, I can teach you the basics. [ENTER]
+
+N:Assuming you're looking through the deployed sattelite that follows your mothership, you can select a federation outpost with LEFT CLICK.
+
+(when base is selected)
+
+N:That's the way. Now, you don't have enough forces to overwhelm them directly, so you should probably take over that derilict base. [ENTER]
+
+N:There might be a few security drones on the fritz, but it shouldn't be too hard to refurbish it into your own. [ENTER]
+
+
+N:Just select the percentage of your base's troops that it'll take. You do know math, right? Don't even answer that one, just take the base already. [ENTER]
+
+
+N:You can send an attack by pressing RIGHT CLICK on it when you have a base selected
+
+(when the neutral base is taken over)
+
+N:F:You're a natural, kid. Now, using everything you've learned, rush the final base.
+
+(The final base is taken over)
+
+(YOU WIN screen appears)
+
+W:Good work, but I'm afraid I'll have to ask you to report that mothership as stolen property. [ENTER]
+
+W:However,in order to get it into any friendly territory you're going to have to go through a wall of xenos. [ENTER]
+
+W:Do me, and yourself, a favor, and help me clear them out. I might even be able to make you a deal for a light sentence. [ENTER]
+
+L:I have no idea how you lost, they weren't even attacking. Go die somewhere peaceful
+(end level)
+
+ 

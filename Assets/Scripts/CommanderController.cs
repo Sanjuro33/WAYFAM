@@ -10,6 +10,7 @@ public class CommanderController : MonoBehaviour
     [SerializeField] bool isEnemy;
     [SerializeField] EnemyAI enemyAI;
     [SerializeField] GameObject ShipType;
+    [SerializeField] bool inactive;
 
     [Header("Troop Counts")]
     [SerializeField] int totalTroops;
@@ -162,7 +163,7 @@ public class CommanderController : MonoBehaviour
 
         }
         //If the player is not at max troops, tell their bases to keep generating
-        else
+        else if(!inactive)
         {
             foreach(BaseController controller in ownedBases)
             {

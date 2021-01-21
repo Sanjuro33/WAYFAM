@@ -16,10 +16,15 @@ public class ClickController : MonoBehaviour
     [SerializeField] bool usingAbility;
     [SerializeField] AbilityButtons abilityButtons;
 
+    [Header("Player Interactivity")]
+    [SerializeField] bool canInteract;
+    
+
 //Main Methods
     // Start is called before the first frame update
     void Start()
     {
+        canInteract = true;
         basePercentage = 1;
         playerTag = GameTags.allegienceTagBlue;
         abilityButtons = GetComponent<AbilityButtons>();
@@ -28,7 +33,10 @@ public class ClickController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForClick();
+        if (canInteract)
+        {
+            CheckForClick();
+        }
     }
 
 //Custom Methods
@@ -136,5 +144,10 @@ public class ClickController : MonoBehaviour
     public void SetBasePercentage(float percentage)
     {
         basePercentage = percentage;
+    }
+
+    public void SetCanInteract(bool canAct)
+    {
+        canInteract = canAct;
     }
 }

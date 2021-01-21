@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6814952164150114285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6814952164150114286}
+  - component: {fileID: 6814952164150114287}
+  m_Layer: 0
+  m_Name: EnemyAI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6814952164150114286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814952164150114285}
+  m_LocalRotation: {x: -0, y: -0.5453832, z: -0, w: 0.83818686}
+  m_LocalPosition: {x: 14.5, y: -30.770002, z: 19.369999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8204206640270458393}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6814952164150114287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814952164150114285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd925a3a8a83346875577dde5b6437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegianceTag: red
+  maxSendingMultiplier: 1.5
+  attackDelay: 10.5
+  attacking: 1
+  commanderController: {fileID: 0}
+  playerCommanderController: {fileID: 0}
+--- !u!1 &8204206640270458391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8204206640270458393}
+  - component: {fileID: 8204206640270458390}
+  m_Layer: 0
+  m_Name: CommanderControllerNone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8204206640270458393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204206640270458391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.92, y: 39.24, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6814952164150114286}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8204206640270458390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204206640270458391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804bcb2a51779924f81c98367619a5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commanderTag: none
+  maxTroops: 0
+  isEnemy: 0
+  enemyAI: {fileID: 0}
+  ShipType: {fileID: 0}
+  totalTroops: 0
+  ownedBases: []
+  deployedShips: []
+  neutralBases: []
+  commanderMothership: {fileID: 0}
+  mainBaseMaterial: {fileID: 2100000, guid: 3aad9eef279fee942b39a8278fa87bb8, type: 2}
+  upgradeTowerMaterial: {fileID: 2100000, guid: 3aad9eef279fee942b39a8278fa87bb8, type: 2}
+  spaceshipMaterial: {fileID: 2100000, guid: 3aad9eef279fee942b39a8278fa87bb8, type: 2}

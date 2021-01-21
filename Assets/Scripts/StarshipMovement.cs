@@ -15,19 +15,25 @@ public class StarshipMovement : MonoBehaviour
     [Header("Coroutines")]
     [SerializeField] Coroutine turningCoroutine;
     
+    [Header("Interactivity")]
+    [SerializeField] bool canMove;
 //Main Methods
 
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
         rotationPosition = transform.eulerAngles.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveForwardAndBackwards();
-        Rotate();
+        if (canMove)
+        {
+            MoveForwardAndBackwards();
+            Rotate();
+        }
     }
 
 //Custom Methods
@@ -73,6 +79,10 @@ public class StarshipMovement : MonoBehaviour
         }
     }
 
+    public void SetCanMove(bool moving)
+    {
+        canMove = moving;
+    }
 }
 
     

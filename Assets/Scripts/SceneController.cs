@@ -10,8 +10,12 @@ public class SceneController : MonoBehaviour
     [SerializeField] int totalPlayerTroops;
     [SerializeField] int totalTroops;
     [SerializeField] bool gameOver = false;
+    [SerializeField] bool playerVictory;
     [SerializeField] TroopSliderController troopSliderController;
     [SerializeField] GameObject canvasControllerObject;
+ 
+   
+   
         
     // Start is called before the first frame update
     void Start()
@@ -19,6 +23,7 @@ public class SceneController : MonoBehaviour
         troopSliderController = FindObjectOfType<TroopSliderController>();
         canvasControllerObject = FindObjectOfType<CanvasController>().gameObject;
         canvasControllerObject.transform.GetChild(GameTags.endScreenCanvasIndex).gameObject.SetActive(false);
+        
         gameOver = true;
     }
 
@@ -29,6 +34,16 @@ public class SceneController : MonoBehaviour
         UpdateSlider();
         CheckToEndGame();
         StartCoroutine(WaitToCheckForGameOver());
+    }
+
+    private void FindControllers()
+    {
+
+    }
+
+    private void FreezeUnfreezePlayerControls()
+    {
+
     }
 
     void UpdateTotalTroops()
@@ -63,13 +78,15 @@ public class SceneController : MonoBehaviour
             if (totalPlayerTroops == 0)
             {
                 UnityEngine.Debug.Log("The Enemy Won");
-                StartCoroutine(EndGame(false));
+                playerVictory = false;
+                StartCoroutine(EndGame(playerVictory));
                 gameOver = true;
             }
             if (totalEnemyTroops == 0)
             {
                 UnityEngine.Debug.Log("The Player Won");
-                StartCoroutine(EndGame(true));
+                playerVictory = true;
+                StartCoroutine(EndGame(playerVictory));
                 gameOver = true;
             }
         }
@@ -92,5 +109,16 @@ public class SceneController : MonoBehaviour
             yield return new WaitForSeconds(1f);
             canvasControllerObject.transform.GetChild(GameTags.endScreenCanvasIndex).GetComponent<EndScreenController>().ReceiveValues(false);
         }
+    }
+
+
+    public bool CheckGameOver()
+    {
+        return gameOver;
+    }
+
+    public bool CheckPlayerVictory()
+    {
+        return playerVictory;
     }
 }

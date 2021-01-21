@@ -10,7 +10,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] string allegianceTag;
     [SerializeField] float maxSendingMultiplier = 1.5f;
     [SerializeField] float attackDelay = 10.5f;
-    [SerializeField] bool attacking = true;
+    [SerializeField] bool attacking;
+    [SerializeField] bool canAttack;
+    [SerializeField] bool canUpgrade;
 
     [Header("Commander Controller Variables")]
     [SerializeField] CommanderController commanderController;
@@ -21,15 +23,34 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        CheckForTag();
         FindPlayerCommanderController();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckToUpgradeBases();
-        AttackOtherBase();
+        if(canUpgrade)
+        {
+            CheckToUpgradeBases();
+        }
+        
+        if (canAttack == true)
+        {
+            UnityEngine.Debug.Log("The AI is somehow breaking through the code!, canAttack = "+ canAttack);
+            AttackOtherBase();
+        }
     }
+
+    private void CheckForTag()
+    {
+        if(gameObject.tag == "inactive")
+        {
+            canAttack = false;
+            canUpgrade = false;
+        }
+    }
+
 
 //Custom Methods
     

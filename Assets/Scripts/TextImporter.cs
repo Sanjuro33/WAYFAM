@@ -9,15 +9,29 @@ public class TextImporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(textFile != null)
-        {
-            textLines = new List<string>((textFile.text.Split('\n')));
-        }
+
+        SortTextFile();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SortTextFile()
+    {
+        if (textFile != null)
+        {
+            textLines = new List<string>((textFile.text.Split('\n')));
+        }
+        foreach(string text in textLines)
+        {
+            if(text == "")
+            {
+                textLines.RemoveAt(textLines.IndexOf(text));
+            }
+        }
     }
 }
