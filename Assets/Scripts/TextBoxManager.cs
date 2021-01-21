@@ -79,12 +79,14 @@ public class TextBoxManager : MonoBehaviour
 
     private void CheckIfTextIsTrigger()
     {
-        
+         UnityEngine.Debug.Log("I know this text is a trigger");
          waitingForTrigger = true;
          if(trigger == true)
          {
             currentLine++;
             theText.text = textLines[currentLine];
+            trigger = false;
+            waitingForTrigger = false;
          }
        
     }

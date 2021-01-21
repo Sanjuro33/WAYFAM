@@ -4,17 +4,21 @@ It doesn't matter, we have a xeno invasion force that's taken root in this secto
 
 YN:Do you at least know how to use that thing? (Y/N)
 
+Y:T:(Activate player click)
+
 Y:F:Okay, sounds good. Just take it out for a spin, crush the xenos, and we can talk later about where you got your hands on it. 
+
+N:T:(Activate player click)
 
 N:Well, it sure was a mighty fine plan to get your hands on a mothership you didn't know how to operate, now wasn't it?
 
 N:No matter, I can teach you the basics. [ENTER]
 
-N:Assuming you're looking through the deployed sattelite that follows your mothership, you can select a federation outpost with LEFT CLICK.
+N:T:Assuming you're looking through the deployed sattelite that follows your mothership, you can select a federation outpost with LEFT CLICK.
 
 (when base is selected)
 
-N:That's the way. Now, you don't have enough forces to overwhelm them directly, so you should probably take over that derilict base. [ENTER]
+N:T:That's the way. Now, you don't have enough forces to overwhelm them directly, so you should probably take over that derilict base. [ENTER]
 
 N:There might be a few security drones on the fritz, but it shouldn't be too hard to refurbish it into your own. [ENTER]
 

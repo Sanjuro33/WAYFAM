@@ -31,10 +31,14 @@ public class TutorialTriggerController : MonoBehaviour
                 textBoxManager.SetTrigger();
                 triggerIndex++;
             }
-            if(triggerIndex == 1)
+            if (triggerIndex == 1);
             {
-
-
+                if (clickController.GetFromBases()[0] != null)
+                {
+                    UnityEngine.Debug.Log("I've detected a fromBase");
+                    textBoxManager.SetTrigger();
+                    triggerIndex++;
+                }
 
             }
             if(triggerIndex == 2)

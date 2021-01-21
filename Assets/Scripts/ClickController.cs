@@ -150,4 +150,9 @@ public class ClickController : MonoBehaviour
     {
         canInteract = canAct;
     }
+
+    public List<GameObject> GetFromBases()
+    {
+        return fromBases;
+    }
 }
